@@ -23,7 +23,7 @@ class User
       validate_result["valid"] = true
     end
 
-    validate_result
+    validate_result.to_json
   end
 
   def register_user(email, password, first_name, last_name)
