@@ -30,7 +30,16 @@ class User
     password_hash = Digest::SHA2.hexdigest password
 
     resister_query = "INSERT INTO trym_users (email, password, first_name, last_name) VALUES ('#{email}', '#{password_hash}', '#{first_name}', '#{last_name}')"
-    @client.query(register_user)
-  end
 
+    validate_result = {}
+    begin
+      @client.query(register_user)
+      validate_result["valid"] = true
+    rescue Exception => e
+      validate_result["valid"] = false
+      validate_result["message"] = "#{e.class}"
+    end
+
+    validate_result
+  end
 end
