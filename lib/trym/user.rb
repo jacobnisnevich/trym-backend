@@ -17,6 +17,9 @@ class User
     query_output = @client.query(login_query)
 
     validate_result = {}
+
+    p query_output.first
+
     if query_output.first.nil? || query_output.first["password"] != password_hash
       validate_result["valid"] = false
     else
