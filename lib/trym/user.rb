@@ -18,7 +18,8 @@ class User
 
     validate_result = {}
 
-    p query_output.first
+    p query_output.first["password"]
+    p password_hash
 
     if query_output.first.nil? || query_output.first["password"] != password_hash
       validate_result["valid"] = false
