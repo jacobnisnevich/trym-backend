@@ -29,7 +29,7 @@ class User
   def register_user(email, password, first_name, last_name)
     password_hash = Digest::SHA2.hexdigest password
 
-    resister_query = "INSERT INTO trym_users (email, password, first_name, last_name) VALUES ('#{email}', '#{password_hash}', '#{first_name}', '#{last_name}')"
+    resister_query = "INSERT INTO trym_users (user_id, email, password, first_name, last_name) VALUES (NULL, '#{email}', '#{password_hash}', '#{first_name}', '#{last_name}')"
 
     validate_result = {}
     begin
