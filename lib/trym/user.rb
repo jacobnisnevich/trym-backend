@@ -36,6 +36,8 @@ class User
 
     resister_query = "INSERT INTO trym_users (user_id, email, password, first_name, last_name) VALUES (NULL, '#{email}', '#{password_hash}', '#{first_name}', '#{last_name}')"
 
+    p register_query
+
     validate_result = {}
     begin
       @client.query(register_user)
