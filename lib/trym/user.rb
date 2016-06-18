@@ -43,6 +43,7 @@ class User
     rescue Exception => e
       validate_result["valid"] = false
       validate_result["message"] = "#{e.class}"
+      p e
     end
 
     validate_result.to_json
