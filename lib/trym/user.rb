@@ -13,17 +13,17 @@ class User
   def login_user(email, password)
     password_hash = Digest::SHA2.hexdigest password
 
-    login_query = "SELECT password FROM trym_users WHERE username='#{username}'"
+    login_query = "SELECT password FROM trym_users WHERE email='#{email}'"
     query_output = @client.query(login_query)
 
     validate_result = {}
-    if query_output.first["password"] == password_hash
-      validate_result["valid"] = true
-    else
+    if query_output.first.nil? || query_output.first["password"] != password_hash
       validate_result["valid"] = false
+    else
+      validate_result["valid"] = true
     end
 
-    validate_result
+    validate_result.to_json
   end
 
   def register_user(email, password, first_name, last_name)
