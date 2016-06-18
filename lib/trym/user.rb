@@ -40,6 +40,6 @@ class User
       validate_result["message"] = "#{e.class}"
     end
 
-    validate_result
+    validate_result.to_json
   end
 end
