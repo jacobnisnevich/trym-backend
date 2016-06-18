@@ -14,5 +14,5 @@ end
 
 post "/register" do 
   user = User.new
-  user.resgister_user(params[:email], params[:password], params[:first_name], params[:last_name])
+  user.register_user(params[:email], params[:password], params[:first_name], params[:last_name])
 end
